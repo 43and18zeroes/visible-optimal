@@ -31,5 +31,10 @@ export class CustomSidenav {
       label: 'Data Entry',
       route: '/data-entry',
     },
+    {
+      icon: 'insightsinsights',
+      label: 'Overview',
+      route: '/overview',
+    },
   ]);
 }
