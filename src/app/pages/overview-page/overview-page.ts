@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { F_AMOUNTS } from '../../constants';
 import { DatePipe, CurrencyPipe } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
+import { CopyButton } from "../../components/shared/copy-button/copy-button";
 
 @Component({
   selector: 'app-overview-page',
-  imports: [DatePipe, CurrencyPipe, MatIcon],
+  imports: [DatePipe, CurrencyPipe, CopyButton],
   templateUrl: './overview-page.html',
   styleUrl: './overview-page.scss'
 })
