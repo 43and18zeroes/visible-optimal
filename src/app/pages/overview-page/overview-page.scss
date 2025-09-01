@@ -1,0 +1,20 @@
+.index__numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.copy__btn {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #e3e2e6;
+  border-radius: 2px;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    margin-top: -1px;
+    margin-left: -6px;
+  }
+}

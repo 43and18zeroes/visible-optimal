@@ -2,7 +2,7 @@
 <h2>{{ amounts.PRODUCT_NAME }}</h2>
 <p class="index__numbers">
   ISIN {{ amounts.PRODUCT_ISIN }}
-  <button mat-icon-button 
+  <button mat-icon-button class="copy__btn"
           (click)="copyToClipboard(amounts.PRODUCT_ISIN)" 
           aria-label="Copy ISIN">
     <mat-icon>{{ copied ? 'check' : 'content_copy' }}</mat-icon>
