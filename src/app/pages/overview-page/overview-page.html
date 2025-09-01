@@ -1,6 +1,14 @@
 <h1>Überblick</h1>
 <h2>{{ amounts.PRODUCT_NAME }}</h2>
-<p class="index__numbers">ISIN {{ amounts.PRODUCT_ISIN }} | WKN {{ amounts.PRODUCT_WKN }}</p>
+<p class="index__numbers">
+  ISIN {{ amounts.PRODUCT_ISIN }}
+  <button mat-icon-button 
+          (click)="copyToClipboard(amounts.PRODUCT_ISIN)" 
+          aria-label="Copy ISIN">
+    <mat-icon>{{ copied ? 'check' : 'content_copy' }}</mat-icon>
+  </button>
+  | WKN {{ amounts.PRODUCT_WKN }}
+</p>
 <div class="buttons">
   <button id="fetchPrice">Kurs abrufen</button>
 </div>
@@ -8,7 +16,7 @@
 <table>
   <tr>
     <td>Kaufdatum</td>
-    <td>{{ purchaseDate | date:'dd.MM.yyyy' }}</td>
+    <td>{{ purchaseDate | date : "dd.MM.yyyy" }}</td>
   </tr>
   <tr>
     <td>Anzahl</td>
@@ -16,7 +24,7 @@
   </tr>
   <tr>
     <td>Ausführungs Kurs</td>
-    <td>{{ amounts.INITIAL_PRICE | currency:'EUR' }}</td>
+    <td>{{ amounts.INITIAL_PRICE | currency : "EUR" }}</td>
   </tr>
   <tr>
     <td>Einstiegsvolumen</td>
