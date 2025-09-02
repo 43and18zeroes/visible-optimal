@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crud": {
+    "visible-optimal": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "crud:build:production"
+              "buildTarget": "visible-optimal:build:production"
             },
             "development": {
-              "buildTarget": "crud:build:development"
+              "buildTarget": "visible-optimal:build:development"
             }
           },
           "defaultConfiguration": "development"
