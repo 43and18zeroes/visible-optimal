@@ -2,14 +2,28 @@
 <h2>{{ amounts.PRODUCT_NAME }}</h2>
 <p class="index__numbers">
   ISIN {{ amounts.PRODUCT_ISIN }}
-  <app-copy-button [value]="amounts.PRODUCT_ISIN" label="Copy ISIN"></app-copy-button>
+  <app-copy-button
+    [value]="amounts.PRODUCT_ISIN"
+    label="Copy ISIN"
+  ></app-copy-button>
   | WKN {{ amounts.PRODUCT_WKN }}
-  <app-copy-button [value]="amounts.PRODUCT_WKN" label="Copy WKN"></app-copy-button>
+  <app-copy-button
+    [value]="amounts.PRODUCT_WKN"
+    label="Copy WKN"
+  ></app-copy-button>
 </p>
 
-<div class="buttons">
+<!-- <div class="buttons">
   <button id="fetchPrice">Kurs abrufen</button>
-</div>
+</div> -->
+
+<button
+  matButton="tonal"
+  type="submit"
+  class="submit-btn"
+>
+  Kurs abrufen
+</button>
 
 <table>
   <tr>
