@@ -37,15 +37,15 @@
   </tr>
   <tr>
     <td>Ausführungs Kurs</td>
-    <td>{{ amounts.INITIAL_PRICE | currency:'EUR':'symbol':'1.2-2':'de' }}</td>
+    <td>{{ formatCurrency(amounts.INITIAL_PRICE) }}</td>
   </tr>
   <tr>
     <td>Einstiegsvolumen</td>
-    <td>{{ initialVolume | currency:'EUR':'symbol':'1.2-2':'de' }}</td>
+    <td>{{ formatCurrency(initialVolume) }}</td>
   </tr>
   <tr>
     <td>Aktueller Kurs</td>
-    <td>{{ currentPrice | currency:'EUR':'symbol':'1.2-2':'de' }}</td>
+    <td>{{ formatCurrency(currentPrice) }}</td>
   </tr>
   <tr>
     <td>Aktuelles Volumen</td>

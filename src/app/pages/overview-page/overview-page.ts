@@ -6,7 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-overview-page',
-  imports: [DatePipe, CurrencyPipe, CopyButton, MatButtonModule],
+  imports: [DatePipe, CopyButton, MatButtonModule],
+  providers: [CurrencyPipe],
   templateUrl: './overview-page.html',
   styleUrl: './overview-page.scss',
 })
@@ -15,6 +16,8 @@ export class OverviewPage {
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
   copied = false;
   currentPrice: number | null = null;
+
+  constructor(private currencyPipe: CurrencyPipe) {}
 
   async copyToClipboard(text: string) {
     await navigator.clipboard.writeText(text);
@@ -43,5 +46,15 @@ export class OverviewPage {
     // updateElementText("currentValue", formatCurrency(currentValue));
     // updateElementText("profitMarginEuro", formatCurrency(profitMarginEuro));
     // updateElementText("profitMarginPercent", `${profitMarginPercent.toFixed(2).replace(".", ",")} %`);
+  }
+
+  formatCurrency(value: number | null): string {
+    if (value === null) {
+      return '';
+    }
+    return (
+      this.currencyPipe.transform(value ?? 0, 'EUR', 'symbol', '1.2-2', 'de') ??
+      ''
+    );
   }
 }
