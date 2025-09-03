@@ -16,6 +16,7 @@ export class OverviewPage {
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
   copied = false;
   currentPrice: number | null = null;
+  currentVolume: number | null = null;
 
   constructor(private currencyPipe: CurrencyPipe) {}
 
@@ -29,7 +30,12 @@ export class OverviewPage {
   }
 
   get initialVolume(): number {
-    return this.amounts.AMOUNT * this.amounts.INITIAL_PRICE;
+    // return this.amounts.AMOUNT * this.amounts.INITIAL_PRICE;
+    return this.calculateVolume(this.amounts.AMOUNT, this.amounts.INITIAL_PRICE);
+  }
+
+  calculateVolume(stockAmount: number, stockPrice: number) {
+    return stockAmount * stockPrice;
   }
 
   fetchDevPrice() {
@@ -39,6 +45,7 @@ export class OverviewPage {
 
   updatePriceDetails(currentPrice: number) {
     this.currentPrice = currentPrice;
+    this.currentVolume = this.calculateVolume(this.amounts.AMOUNT, currentPrice);
     // updateElementText("currentPrice", formatCurrency(price));
     // const currentValue = calculateInitialValue(stockAmount, price);
     // const profitMarginEuro = currentValue - initialValue;
