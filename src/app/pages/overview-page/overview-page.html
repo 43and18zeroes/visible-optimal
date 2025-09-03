@@ -1,6 +1,6 @@
 <h1>Überblick</h1>
 <h2>{{ amounts.PRODUCT_NAME }}</h2>
-<p class="index__numbers">
+<!-- <p class="index__numbers">
   <span class="text__accent">ISIN</span> {{ amounts.PRODUCT_ISIN }}
   <app-copy-button
     [value]="amounts.PRODUCT_ISIN"
@@ -13,7 +13,30 @@
     [value]="amounts.PRODUCT_WKN"
     label="Copy WKN"
   ></app-copy-button>
-</p>
+</p> -->
+
+<table>
+  <tr>
+    <td class="text__accent">ISIN</td>
+    <td>
+      {{ amounts.PRODUCT_ISIN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_ISIN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+  <tr>
+    <td class="text__accent">WKN</td>
+    <td>
+      {{ amounts.PRODUCT_WKN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_WKN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+</table>
 
 <button
   (click)="fetchDevPrice()"
@@ -26,35 +49,35 @@
 
 <table>
   <tr>
-    <td>Kaufdatum</td>
+    <td class="text__accent">Kaufdatum</td>
     <td>{{ purchaseDate | date : "dd.MM.yyyy" }}</td>
   </tr>
   <tr>
-    <td>Anzahl</td>
+    <td class="text__accent">Anzahl</td>
     <td>{{ amounts.AMOUNT }}</td>
   </tr>
   <tr>
-    <td>Ausführungs Kurs</td>
+    <td class="text__accent">Ausführungs Kurs</td>
     <td>{{ formatCurrency(amounts.INITIAL_PRICE) }}</td>
   </tr>
   <tr>
-    <td>Einstiegsvolumen</td>
+    <td class="text__accent">Einstiegsvolumen</td>
     <td>{{ formatCurrency(initialVolume) }}</td>
   </tr>
   <tr>
-    <td>Aktueller Kurs</td>
+    <td class="text__accent">Aktueller Kurs</td>
     <td>{{ formatCurrency(currentPrice) }}</td>
   </tr>
   <tr>
-    <td>Aktuelles Volumen</td>
+    <td class="text__accent">Aktuelles Volumen</td>
     <td>{{ formatCurrency(currentVolume) }}</td>
   </tr>
   <tr>
-    <td>Rendite in Euro</td>
+    <td class="text__accent">Rendite in Euro</td>
     <td>{{ formatCurrency(profitEuro) }}</td>
   </tr>
   <tr>
-    <td>Rendite in Prozent</td>
+    <td class="text__accent">Rendite in Prozent</td>
     <td>
       <ng-container *ngIf="profitPercent !== null">
         {{ profitPercent | number : "1.2-2" : "de" }} %
