@@ -18,6 +18,7 @@
 </div> -->
 
 <button
+(click)="fetchDevPrice()"
   matButton="tonal"
   type="submit"
   class="submit-btn"
@@ -44,7 +45,7 @@
   </tr>
   <tr>
     <td>Aktueller Kurs</td>
-    <td></td>
+    <td>{{ currentPrice | currency:'EUR':'symbol':'1.2-2':'de' }}</td>
   </tr>
   <tr>
     <td>Aktuelles Volumen</td>

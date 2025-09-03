@@ -14,6 +14,7 @@ export class OverviewPage {
   amounts = F_AMOUNTS;
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
   copied = false;
+  currentPrice: number | null = null;
 
   async copyToClipboard(text: string) {
     await navigator.clipboard.writeText(text);
@@ -26,5 +27,21 @@ export class OverviewPage {
 
   get initialVolume(): number {
     return this.amounts.AMOUNT * this.amounts.INITIAL_PRICE;
+  }
+
+  fetchDevPrice() {
+    const devPrice: number = 200; // Mock price for development
+    this.updatePriceDetails(devPrice);
+  }
+
+  updatePriceDetails(currentPrice: number) {
+    this.currentPrice = currentPrice;
+    // updateElementText("currentPrice", formatCurrency(price));
+    // const currentValue = calculateInitialValue(stockAmount, price);
+    // const profitMarginEuro = currentValue - initialValue;
+    // const profitMarginPercent = ((price - initialPrice) / initialPrice) * 100;
+    // updateElementText("currentValue", formatCurrency(currentValue));
+    // updateElementText("profitMarginEuro", formatCurrency(profitMarginEuro));
+    // updateElementText("profitMarginPercent", `${profitMarginPercent.toFixed(2).replace(".", ",")} %`);
   }
 }
