@@ -1,7 +1,8 @@
 <button
   mat-icon-button
-  (click)="copyToClipboard()"
+  (click)="copyToClipboard($event)"
+  (touchstart)="copyToClipboard($event)"
   [attr.aria-label]="label"
 >
-  <mat-icon>{{ copied ? "check" : "content_copy" }}</mat-icon>
+  <mat-icon>{{ copied ? 'check' : 'content_copy' }}</mat-icon>
 </button>

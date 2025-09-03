@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-copy-button',
@@ -8,18 +9,19 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './copy-button.scss',
 })
 export class CopyButton {
-  @Input() value = ''; // Text, der kopiert wird
-  @Input() label = 'Copy'; // aria-label (optional)
+  private clipboard = inject(Clipboard);
+
+  @Input() value = '';
+  @Input() label = 'Copy';
 
   copied = false;
 
-  async copyToClipboard() {
-    try {
-      await navigator.clipboard.writeText(this.value);
-      this.copied = true;
-      setTimeout(() => (this.copied = false), 3000);
-    } catch (err) {
-      console.error('Clipboard copy failed', err);
-    }
+  copyToClipboard(e?: Event) {
+    // Verhindert ggf. Doppelfeuer auf Mobile, s.u.
+    e?.preventDefault();
+
+    const ok = this.clipboard.copy(this.value);
+    this.copied = ok; // true, wenn erfolgreich (inkl. Fallback)
+    if (ok) setTimeout(() => (this.copied = false), 3000);
   }
 }
