@@ -53,10 +53,12 @@
   </tr>
   <tr>
     <td>Rendite in Euro</td>
-    <td></td>
+    <td>{{ formatCurrency(profitEuro) }}</td>
   </tr>
   <tr>
     <td>Rendite in Prozent</td>
-    <td></td>
+    <td>    <ng-container *ngIf="profitPercent !== null">
+      {{ profitPercent | number:'1.2-2':'de' }} %
+    </ng-container></td>
   </tr>
 </table>

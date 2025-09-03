@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { F_AMOUNTS } from '../../constants';
-import { DatePipe, CurrencyPipe } from '@angular/common';
+import { DatePipe, CurrencyPipe, DecimalPipe, CommonModule } from '@angular/common';
 import { CopyButton } from '../../components/shared/copy-button/copy-button';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-overview-page',
-  imports: [DatePipe, CopyButton, MatButtonModule],
+  imports: [CommonModule, DatePipe, DecimalPipe, CopyButton, MatButtonModule],
   providers: [CurrencyPipe],
   templateUrl: './overview-page.html',
   styleUrl: './overview-page.scss',
@@ -31,6 +31,20 @@ export class OverviewPage {
 
   get initialVolume(): number {
     return this.calculateVolume(this.amounts.INITIAL_PRICE);
+  }
+
+  get profitEuro(): number | null {
+    if (this.currentVolume === null) return null;
+    return this.currentVolume - this.initialVolume;
+  }
+
+  get profitPercent(): number | null {
+    if (this.currentPrice === null) return null;
+    return (
+      ((this.currentPrice - this.amounts.INITIAL_PRICE) /
+        this.amounts.INITIAL_PRICE) *
+      100
+    );
   }
 
   calculateVolume(stockPrice: number) {
