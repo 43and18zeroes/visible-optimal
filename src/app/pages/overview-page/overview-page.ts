@@ -30,12 +30,11 @@ export class OverviewPage {
   }
 
   get initialVolume(): number {
-    // return this.amounts.AMOUNT * this.amounts.INITIAL_PRICE;
-    return this.calculateVolume(this.amounts.AMOUNT, this.amounts.INITIAL_PRICE);
+    return this.calculateVolume(this.amounts.INITIAL_PRICE);
   }
 
-  calculateVolume(stockAmount: number, stockPrice: number) {
-    return stockAmount * stockPrice;
+  calculateVolume(stockPrice: number) {
+    return this.amounts.AMOUNT * stockPrice;
   }
 
   fetchDevPrice() {
@@ -45,7 +44,7 @@ export class OverviewPage {
 
   updatePriceDetails(currentPrice: number) {
     this.currentPrice = currentPrice;
-    this.currentVolume = this.calculateVolume(this.amounts.AMOUNT, currentPrice);
+    this.currentVolume = this.calculateVolume(currentPrice);
     // updateElementText("currentPrice", formatCurrency(price));
     // const currentValue = calculateInitialValue(stockAmount, price);
     // const profitMarginEuro = currentValue - initialValue;
