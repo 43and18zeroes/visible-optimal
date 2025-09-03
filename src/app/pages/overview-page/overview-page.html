@@ -6,19 +6,17 @@
     [value]="amounts.PRODUCT_ISIN"
     label="Copy ISIN"
   ></app-copy-button>
-  | WKN {{ amounts.PRODUCT_WKN }}
+</p>
+<p>
+  WKN {{ amounts.PRODUCT_WKN }}
   <app-copy-button
     [value]="amounts.PRODUCT_WKN"
     label="Copy WKN"
   ></app-copy-button>
 </p>
 
-<!-- <div class="buttons">
-  <button id="fetchPrice">Kurs abrufen</button>
-</div> -->
-
 <button
-(click)="fetchDevPrice()"
+  (click)="fetchDevPrice()"
   matButton="tonal"
   type="submit"
   class="submit-btn"
@@ -57,8 +55,10 @@
   </tr>
   <tr>
     <td>Rendite in Prozent</td>
-    <td>    <ng-container *ngIf="profitPercent !== null">
-      {{ profitPercent | number:'1.2-2':'de' }} %
-    </ng-container></td>
+    <td>
+      <ng-container *ngIf="profitPercent !== null">
+        {{ profitPercent | number : "1.2-2" : "de" }} %
+      </ng-container>
+    </td>
   </tr>
 </table>

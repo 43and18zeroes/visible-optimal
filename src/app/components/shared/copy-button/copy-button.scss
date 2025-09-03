@@ -1,9 +1,11 @@
-.copy__btn {
+button {
   width: 16px;
   height: 16px;
   border: 1px solid #e3e2e6;
   border-radius: 2px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 
   mat-icon {
     margin-top: -1px;
