@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { F_AMOUNTS } from '../../constants';
-import { DatePipe, CurrencyPipe, DecimalPipe, CommonModule } from '@angular/common';
+import {
+  DatePipe,
+  CurrencyPipe,
+  DecimalPipe,
+  CommonModule,
+} from '@angular/common';
 import { CopyButton } from '../../components/shared/copy-button/copy-button';
 import { MatButtonModule } from '@angular/material/button';
+import { FinancialDataService } from '../../financial-data-service';
 
 @Component({
   selector: 'app-overview-page',
@@ -18,7 +24,13 @@ export class OverviewPage {
   currentPrice: number | null = null;
   currentVolume: number | null = null;
 
-  constructor(private currencyPipe: CurrencyPipe) {}
+  loading = false;
+  error: string | null = null;
+
+  constructor(
+    private currencyPipe: CurrencyPipe,
+    private financialData: FinancialDataService
+  ) {}
 
   async copyToClipboard(text: string) {
     await navigator.clipboard.writeText(text);
@@ -54,6 +66,27 @@ export class OverviewPage {
   fetchDevPrice() {
     const devPrice: number = 200; // Mock price for development
     this.updatePriceDetails(devPrice);
+  }
+
+  fetchLivePrice(symbol = 'VWCE.DE') {
+    this.loading = true;
+    this.error = null;
+    this.currentPrice = null;
+
+    this.financialData.getGlobalQuote(symbol).subscribe({
+      next: (price) => {
+        this.updatePriceDetails(price);
+        this.loading = false;
+      },
+      error: (err: unknown) => {
+        console.error(err);
+        this.error =
+          err instanceof Error
+            ? err.message
+            : 'Fehler beim Abrufen der Kursdaten.';
+        this.loading = false;
+      },
+    });
   }
 
   updatePriceDetails(currentPrice: number) {
