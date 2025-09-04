@@ -92,13 +92,6 @@ export class OverviewPage {
   updatePriceDetails(currentPrice: number) {
     this.currentPrice = currentPrice;
     this.currentVolume = this.calculateVolume(currentPrice);
-    // updateElementText("currentPrice", formatCurrency(price));
-    // const currentValue = calculateInitialValue(stockAmount, price);
-    // const profitMarginEuro = currentValue - initialValue;
-    // const profitMarginPercent = ((price - initialPrice) / initialPrice) * 100;
-    // updateElementText("currentValue", formatCurrency(currentValue));
-    // updateElementText("profitMarginEuro", formatCurrency(profitMarginEuro));
-    // updateElementText("profitMarginPercent", `${profitMarginPercent.toFixed(2).replace(".", ",")} %`);
   }
 
   formatCurrency(value: number | null): string {
