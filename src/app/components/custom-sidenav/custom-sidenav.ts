@@ -35,17 +35,17 @@ export class CustomSidenav {
     {
       icon: 'insightsinsights',
       label: 'Overview',
-      component: 'overview'
+      component: 'overview',
     },
     {
       icon: 'filter_alt',
       label: 'FTSE',
-      component: 'ftse'
+      component: 'ftse',
     },
     {
       icon: 'filter_alt',
       label: 'MSCI',
-      component: 'msci'
+      component: 'msci',
     },
   ]);
 }

@@ -25,12 +25,12 @@
 
     <div id="nav-host"></div>
     <div id="content-host"></div>
-@if (currentComponent() === 'ftse') {
-  <app-ftse></app-ftse>
-}
-@if (currentComponent() === 'msci') {
-  <app-msci></app-msci>
-}
-
+    @switch (currentComponent()) { @case ('ftse') {
+    <app-ftse></app-ftse>
+    } @case ('msci') {
+    <app-msci></app-msci>
+    } @default {
+    <span>Bitte Komponente wählen …</span>
+    } }
   </mat-sidenav-content>
 </mat-sidenav-container>
