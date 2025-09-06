@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, inject, Input, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { ComponentSwitchService } from '../../services/component-switch-service';
 
 export type MenuItem = {
   icon: string;
   label: string;
-  route: string;
+  component: string;
 };
 
 @Component({
@@ -17,6 +18,7 @@ export type MenuItem = {
   styleUrl: './custom-sidenav.scss',
 })
 export class CustomSidenav {
+  switcher = inject(ComponentSwitchService);
   sideNavCollapsed = signal(false);
 
   @Input() set collapsed(val: boolean) {
@@ -25,11 +27,20 @@ export class CustomSidenav {
 
   iconMargin = computed(() => (this.sideNavCollapsed() ? '12px' : '16px'));
 
+  renderComponent(component: string) {
+    this.switcher.switchTo(component);
+  }
+
   menuItems = signal<MenuItem[]>([
     {
       icon: 'insightsinsights',
       label: 'Overview',
-      route: '/overview',
+      component: 'overview'
+    },
+    {
+      icon: 'filter_alt',
+      label: 'FTSE',
+      component: 'ftse'
     },
   ]);
 }

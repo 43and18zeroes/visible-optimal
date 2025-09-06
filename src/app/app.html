@@ -22,5 +22,12 @@
     (touchend)="collapseSidenav()"
   >
     <router-outlet />
+
+    <div id="nav-host"></div>
+    <div id="content-host"></div>
+@if (currentComponent() === 'ftse') {
+  <app-ftse></app-ftse>
+}
+
   </mat-sidenav-content>
 </mat-sidenav-container>

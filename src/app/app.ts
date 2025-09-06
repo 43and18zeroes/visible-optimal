@@ -10,6 +10,8 @@ import { RouterOutlet } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DeviceService } from './services/device-service';
 import { Subscription } from 'rxjs';
+import { ComponentSwitchService } from './services/component-switch-service';
+import { Ftse } from './components/assets/ftse/ftse';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,7 @@ import { Subscription } from 'rxjs';
     MatButtonModule,
     MatSlideToggleModule,
     CustomSidenav,
+    Ftse,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -30,13 +33,15 @@ export class App {
   protected readonly title = signal('Angular Material Darkmode');
   deviceService = inject(DeviceService);
   themeService = inject(ThemeService);
+  switcher = inject(ComponentSwitchService);
   collapsed = signal(true);
   isDesktop = signal(true);
   private breakpointSub?: Subscription;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver
-  ) {}
+  currentComponent = signal('overview');
+  private subs: Subscription[] = [];
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
     this.themeService.initTheme();
@@ -45,6 +50,11 @@ export class App {
       .subscribe((result) => {
         this.isDesktop.set(!result.matches);
       });
+    this.subs.push(
+      this.switcher.changes$.subscribe((name) => {
+        this.currentComponent.set(name);
+      })
+    );
   }
 
   sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));

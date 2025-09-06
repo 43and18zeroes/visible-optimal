@@ -1,4 +1,4 @@
-<mat-nav-list>
+<!-- <mat-nav-list>
   @for (item of menuItems(); track item.route) {
     <a
       mat-list-item
@@ -19,5 +19,19 @@
         <span matListItemTitle>{{ item.label }}</span>
       }
     </a>
+  }
+</mat-nav-list> -->
+
+<mat-nav-list>
+  @for (item of menuItems(); track item.component) {
+  <a mat-list-item (click)="renderComponent(item.component)">
+    <mat-icon matListItemIcon [style.marginLeft]="iconMargin()">
+      {{ item.icon }}
+    </mat-icon>
+
+    @if (!sideNavCollapsed()) {
+    <span matListItemTitle>{{ item.label }}</span>
+    }
+  </a>
   }
 </mat-nav-list>
