@@ -71,9 +71,8 @@
   <tr>
     <td class="text__accent">Prozent</td>
     <td>
-      <ng-container *ngIf="profitPercent !== null">
-        {{ profitPercent | number : "1.2-2" : "de" }} %
-      </ng-container>
+      @if (profitPercent !== null) {
+      {{ profitPercent | number : "1.2-2" : "de" }} % }
     </td>
   </tr>
 </table>
