@@ -42,5 +42,10 @@ export class CustomSidenav {
       label: 'FTSE',
       component: 'ftse'
     },
+    {
+      icon: 'filter_alt',
+      label: 'MSCI',
+      component: 'msci'
+    },
   ]);
 }
