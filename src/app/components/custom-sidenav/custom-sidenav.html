@@ -1,31 +1,21 @@
-<!-- <mat-nav-list>
-  @for (item of menuItems(); track item.route) {
-    <a
-      mat-list-item
-      [routerLink]="item.route"
-      routerLinkActive="selected-menu-item"
-      #rla="routerLinkActive"
-      [activated]="rla.isActive"
-    >
-      <mat-icon
-        [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
-        matListItemIcon
-        [style.marginLeft]="iconMargin()"
-      >
-        {{ item.icon }}
-      </mat-icon>
-
-      @if (!sideNavCollapsed()) {
-        <span matListItemTitle>{{ item.label }}</span>
-      }
-    </a>
-  }
-</mat-nav-list> -->
-
 <mat-nav-list>
   @for (item of menuItems(); track item.component) {
-  <a mat-list-item (click)="renderComponent(item.component)">
-    <mat-icon matListItemIcon [style.marginLeft]="iconMargin()">
+  <a
+    mat-list-item
+    (click)="renderComponent(item.component)"
+    [activated]="active() === item.component"
+    [class.selected-menu-item]="active() === item.component"
+    [attr.aria-current]="active() === item.component ? 'page' : null"
+  >
+    <mat-icon
+      matListItemIcon
+      [fontSet]="
+        active() === item.component
+          ? 'material-icons'
+          : 'material-icons-outlined'
+      "
+      [style.marginLeft]="iconMargin()"
+    >
       {{ item.icon }}
     </mat-icon>
 

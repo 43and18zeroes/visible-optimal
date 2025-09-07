@@ -27,7 +27,14 @@ export class CustomSidenav {
 
   iconMargin = computed(() => (this.sideNavCollapsed() ? '12px' : '16px'));
 
+  active = signal<string>('ftse');
+
+  ngOnInit() {
+    this.switcher.changes$.subscribe((name) => this.active.set(name));
+  }
+
   renderComponent(component: string) {
+    this.active.set(component);
     this.switcher.switchTo(component);
   }
 
