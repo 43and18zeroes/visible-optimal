@@ -22,9 +22,6 @@
     (touchend)="collapseSidenav()"
   >
     <router-outlet />
-
-    <div id="nav-host"></div>
-    <div id="content-host"></div>
     @switch (currentComponent()) { @case ('ftse') {
     <app-ftse></app-ftse>
     } @case ('msci') {

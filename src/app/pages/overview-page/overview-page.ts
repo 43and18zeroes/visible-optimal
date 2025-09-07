@@ -8,7 +8,7 @@ import {
 } from '@angular/common';
 import { CopyButton } from '../../components/shared/copy-button/copy-button';
 import { MatButtonModule } from '@angular/material/button';
-import { FinancialDataService } from '../../financial-data-service';
+import { FinancialDataService } from '../../services/financial-data-service';
 
 @Component({
   selector: 'app-overview-page',

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { secrets } from '../environments/environment.secret';
+import { secrets } from '../../environments/environment.secret';
 
 
 type GlobalQuoteResponse = {
