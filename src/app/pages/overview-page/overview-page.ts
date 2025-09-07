@@ -21,7 +21,6 @@ export class OverviewPage {
   financialData = inject(FinancialDataService)
   amounts = F_AMOUNTS;
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
-  copied = false;
   currentPrice: number | null = null;
   currentVolume: number | null = null;
 

@@ -1,1 +1,78 @@
-<p>ftse works!</p>
+<h2>{{ amounts.PRODUCT_NAME }}</h2>
+<table>
+  <tr>
+    <td class="text__accent">ISIN</td>
+    <td>
+      {{ amounts.PRODUCT_ISIN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_ISIN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+  <tr>
+    <td class="text__accent">WKN</td>
+    <td>
+      {{ amounts.PRODUCT_WKN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_WKN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+</table>
+
+<button
+  (click)="fetchDevPrice()"
+  matButton="tonal"
+  type="submit"
+  class="submit-btn"
+>
+  Kurs abrufen
+</button>
+
+<table>
+  <tr>
+    <th>Kauf</th>
+  </tr>
+  <tr>
+    <td class="text__accent">Datum</td>
+    <td>{{ purchaseDate | date : "dd.MM.yyyy" }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Anzahl</td>
+    <td>{{ amounts.AMOUNT }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Kurs</td>
+    <td>{{ formatCurrency(amounts.INITIAL_PRICE) }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Volumen</td>
+    <td>{{ formatCurrency(initialVolume) }}</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>Aktuell</th>
+  </tr>
+  <tr>
+    <td class="text__accent">Kurs</td>
+    <td>{{ formatCurrency(currentPrice) }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Volumen</td>
+    <td>{{ formatCurrency(currentVolume) }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Rendite</td>
+    <td>{{ formatCurrency(profitEuro) }}</td>
+  </tr>
+  <tr>
+    <td class="text__accent">Prozent</td>
+    <td>
+      @if (profitPercent !== null) {
+      {{ profitPercent | number : "1.2-2" : "de" }} % }
+    </td>
+  </tr>
+</table>
