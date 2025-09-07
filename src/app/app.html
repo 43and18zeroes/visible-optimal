@@ -21,7 +21,6 @@
     [style.margin-left]="contentMarginLeft()"
     (touchend)="collapseSidenav()"
   >
-    <router-outlet />
     @switch (currentComponent()) { @case ('ftse') {
     <app-ftse></app-ftse>
     } @case ('msci') {

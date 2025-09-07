@@ -18,7 +18,6 @@ import { Msci } from "./components/assets/msci/msci";
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -40,7 +39,7 @@ export class App {
   isDesktop = signal(true);
   private breakpointSub?: Subscription;
 
-  currentComponent = signal('overview');
+  currentComponent = signal('ftse');
   private subs: Subscription[] = [];
 
   constructor(private breakpointObserver: BreakpointObserver) {}
