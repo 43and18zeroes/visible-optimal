@@ -32,15 +32,6 @@ export class OverviewPage {
     private currencyPipe: CurrencyPipe
   ) {}
 
-  async copyToClipboard(text: string) {
-    await navigator.clipboard.writeText(text);
-    this.copied = true;
-
-    setTimeout(() => {
-      this.copied = false;
-    }, 3000);
-  }
-
   get initialVolume(): number {
     return this.calculateVolume(this.amounts.INITIAL_PRICE);
   }
