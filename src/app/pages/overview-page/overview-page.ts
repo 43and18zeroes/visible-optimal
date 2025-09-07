@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { F_AMOUNTS } from '../../constants';
 import {
   DatePipe,
@@ -18,6 +18,7 @@ import { FinancialDataService } from '../../services/financial-data-service';
   styleUrl: './overview-page.scss',
 })
 export class OverviewPage {
+  financialData = inject(FinancialDataService)
   amounts = F_AMOUNTS;
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
   copied = false;
@@ -28,8 +29,7 @@ export class OverviewPage {
   error: string | null = null;
 
   constructor(
-    private currencyPipe: CurrencyPipe,
-    private financialData: FinancialDataService
+    private currencyPipe: CurrencyPipe
   ) {}
 
   async copyToClipboard(text: string) {
