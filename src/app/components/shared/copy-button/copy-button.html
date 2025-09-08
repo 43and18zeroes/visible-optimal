@@ -4,5 +4,6 @@
   (touchstart)="copyToClipboard($event)"
   [attr.aria-label]="label"
 >
-  <mat-icon>{{ copied ? 'check' : 'content_copy' }}</mat-icon>
+  <mat-icon class="icon content" [class.hidden]="copied">content_copy</mat-icon>
+  <mat-icon class="icon check" [class.visible]="copied">check</mat-icon>
 </button>

@@ -1,4 +1,5 @@
 button {
+  position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -8,9 +9,22 @@ button {
 
   mat-icon {
     font-size: 16px;
-    width: 16px;
-    height: 16px;
-    margin-bottom: -1px;
-    margin-left: -3px;
+    position: absolute;
+    top: 2px;
+    left: -1px;
+    transition: opacity 150ms ease-in-out;
+    opacity: 1;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    &.check {
+      opacity: 0;
+    }
+
+    &.visible {
+      opacity: 1;
+    }
   }
 }
