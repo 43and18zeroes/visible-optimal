@@ -6,8 +6,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomSidenav } from './components/custom-sidenav/custom-sidenav';
 import { ThemeService } from './services/theme-service';
-import { RouterOutlet } from '@angular/router';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DeviceService } from './services/device-service';
 import { Subscription } from 'rxjs';
 import { ComponentSwitchService } from './services/component-switch-service';
@@ -35,22 +33,28 @@ export class App {
   deviceService = inject(DeviceService);
   themeService = inject(ThemeService);
   switcher = inject(ComponentSwitchService);
-  collapsed = signal(true);
+  collapsed = signal(false);
   isDesktop = signal(true);
   private breakpointSub?: Subscription;
 
   currentComponent = signal('ftse');
   private subs: Subscription[] = [];
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor() {
+    effect(() => {
+      const mobile = this.deviceService.isMobile();
+      if (mobile) {
+        this.collapsed.set(true);
+        this.isDesktop.set(false);
+      } else {
+        this.isDesktop.set(true);
+      }
+    });
+  }
 
   ngOnInit() {
     this.themeService.initTheme();
-    this.breakpointSub = this.breakpointObserver
-      .observe([Breakpoints.Handset])
-      .subscribe((result) => {
-        this.isDesktop.set(!result.matches);
-      });
+
     this.subs.push(
       this.switcher.changes$.subscribe((name) => {
         this.currentComponent.set(name);
