@@ -1,5 +1,28 @@
 @use "../styles/mixins" as custom-mixins;
 
+/* Material-Feeling: sanftes Einfaden + Slide von oben */
+@keyframes revealDown {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0); // alles abgeschnitten, nur obere Linie sichtbar
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);    // komplett sichtbar
+  }
+}
+
+.switch-anim {
+  will-change: opacity, clip-path;
+  animation: revealDown 400ms ease-in-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-anim {
+    animation: none;
+  }
+}
+
 mat-toolbar {
   @include custom-mixins.mat-theme-transition();
   display: flex;

@@ -22,11 +22,17 @@
     (touchend)="collapseSidenav()"
   >
     @switch (currentComponent()) { @case ('ftse') {
-    <app-ftse></app-ftse>
+    <div class="switch-anim">
+      <app-ftse></app-ftse>
+    </div>
     } @case ('msci') {
-    <app-msci></app-msci>
+    <div class="switch-anim">
+      <app-msci></app-msci>
+    </div>
     } @default {
-    <span>Bitte Komponente wählen …</span>
+    <div class="switch-anim">
+      <span>Bitte Komponente wählen …</span>
+    </div>
     } }
   </mat-sidenav-content>
 </mat-sidenav-container>
