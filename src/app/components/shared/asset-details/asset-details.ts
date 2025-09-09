@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { F_AMOUNTS } from '../../../constants';
-import { CopyButton } from '../copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-asset-details',
-  imports: [CopyButton, DatePipe, DecimalPipe, MatButtonModule],
+  imports: [DatePipe, DecimalPipe, MatButtonModule],
   providers: [CurrencyPipe],
   templateUrl: './asset-details.html',
   styleUrl: './asset-details.scss',

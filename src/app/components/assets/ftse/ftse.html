@@ -1,2 +1,26 @@
 <h2>{{ amounts.PRODUCT_NAME }}</h2>
+
+<table>
+  <tr>
+    <td class="text__accent">ISIN</td>
+    <td>
+      {{ amounts.PRODUCT_ISIN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_ISIN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+  <tr>
+    <td class="text__accent">WKN</td>
+    <td>
+      {{ amounts.PRODUCT_WKN }}
+      <app-copy-button
+        [value]="amounts.PRODUCT_WKN"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+</table>
+
 <app-asset-details></app-asset-details>
