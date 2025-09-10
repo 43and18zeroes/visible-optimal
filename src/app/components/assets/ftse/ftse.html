@@ -4,7 +4,7 @@
   <tr>
     <td class="text__accent">ISIN</td>
     <td class="product__info">
-      <div>{{ amounts.PRODUCT_ISIN }}</div>
+      {{ amounts.PRODUCT_ISIN}}
       <app-copy-button
         [value]="amounts.PRODUCT_ISIN"
         label="Copy ISIN"
@@ -13,7 +13,7 @@
   </tr>
   <tr>
     <td class="text__accent">WKN</td>
-    <td>
+    <td class="product__info">
       {{ amounts.PRODUCT_WKN }}
       <app-copy-button
         [value]="amounts.PRODUCT_WKN"
