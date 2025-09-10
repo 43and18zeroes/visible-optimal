@@ -3,10 +3,11 @@ import { AssetDetails } from '../../shared/asset-details/asset-details';
 import { F_AMOUNTS } from '../../../constants';
 import { CopyButton } from '../../shared/copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-ftse',
-  imports: [AssetDetails, CopyButton],
+  imports: [AssetDetails, CopyButton, MatButtonModule],
   templateUrl: './ftse.html',
   styleUrl: './ftse.scss',
 })

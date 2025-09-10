@@ -49,3 +49,11 @@ h1, h2 {
 td {
   font-size: 20px;
 }
+
+.text__accent {
+  color: light-dark(#56575b, #bbb9be);
+}
+
+table tr td:first-child {
+  padding-right: 10px;
+}

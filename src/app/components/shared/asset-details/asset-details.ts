@@ -1,6 +1,5 @@
-import { Component, inject, input, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
 
 export interface HoldingAmounts {
   PRODUCT_NAME: string;
@@ -13,7 +12,7 @@ export interface HoldingAmounts {
 
 @Component({
   selector: 'app-asset-details',
-  imports: [DatePipe, DecimalPipe, MatButtonModule],
+  imports: [DatePipe, DecimalPipe],
   providers: [CurrencyPipe],
   templateUrl: './asset-details.html',
   styleUrl: './asset-details.scss',
