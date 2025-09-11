@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { AssetDetails } from '../../shared/asset-details/asset-details';
-import { F_AMOUNTS } from '../../../constants';
 import { CopyButton } from '../../shared/copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { MatButtonModule } from '@angular/material/button';
+import { ASSETS_DATA } from '../../../constants';
 
 @Component({
   selector: 'app-ftse',
@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class Ftse {
   financialData = inject(FinancialDataService);
 
-  amounts = F_AMOUNTS;
+  amounts = ASSETS_DATA.F_AMOUNTS;
 
   purchaseDate = new Date(this.amounts.PURCHASE_DATE);
   currentPrice: number | null = null;
