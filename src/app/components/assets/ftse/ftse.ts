@@ -46,7 +46,7 @@ export class Ftse {
     this.updatePriceDetails(devPrice);
   }
 
-  fetchLivePrice(symbol = 'VWCE.DE') {
+  fetchLivePrice(symbol = this.amounts.API_SYMBOL) {
     this.loading = true;
     this.error = null;
     this.currentPrice = null;
