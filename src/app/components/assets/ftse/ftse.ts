@@ -14,9 +14,9 @@ import { ASSETS_DATA } from '../../../constants';
 export class Ftse {
   financialData = inject(FinancialDataService);
 
-  amounts = ASSETS_DATA.F_AMOUNTS;
+  assetData = ASSETS_DATA.F_AMOUNTS;
 
-  purchaseDate = new Date(this.amounts.PURCHASE_DATE);
+  purchaseDate = new Date(this.assetData.PURCHASE_DATE);
   currentPrice: number | null = null;
   currentVolume: number | null = null;
 
@@ -24,7 +24,7 @@ export class Ftse {
   error: string | null = null;
 
   get initialVolume(): number {
-    return this.calculateVolume(this.amounts.INITIAL_PRICE);
+    return this.calculateVolume(this.assetData.INITIAL_PRICE);
   }
 
   get profitEuro(): number | null {
@@ -35,8 +35,8 @@ export class Ftse {
   get profitPercent(): number | null {
     if (this.currentPrice === null) return null;
     return (
-      ((this.currentPrice - this.amounts.INITIAL_PRICE) /
-        this.amounts.INITIAL_PRICE) *
+      ((this.currentPrice - this.assetData.INITIAL_PRICE) /
+        this.assetData.INITIAL_PRICE) *
       100
     );
   }
@@ -46,7 +46,7 @@ export class Ftse {
     this.updatePriceDetails(devPrice);
   }
 
-  fetchLivePrice(symbol = this.amounts.API_SYMBOL) {
+  fetchLivePrice(symbol = this.assetData.API_SYMBOL) {
     this.loading = true;
     this.error = null;
     this.currentPrice = null;
@@ -73,6 +73,6 @@ export class Ftse {
   }
 
   calculateVolume(stockPrice: number) {
-    return this.amounts.AMOUNT * stockPrice;
+    return this.assetData.AMOUNT * stockPrice;
   }
 }
