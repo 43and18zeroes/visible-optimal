@@ -14,7 +14,8 @@ import { ASSETS_DATA } from '../../../constants';
 export class Ftse {
   financialData = inject(FinancialDataService);
 
-  assetData = ASSETS_DATA.F_AMOUNTS;
+  ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
+  assetData = ASSETS_DATA.FTSE.F_AMOUNTS;
 
   purchaseDate = new Date(this.assetData.PURCHASE_DATE);
   currentPrice: number | null = null;
@@ -46,7 +47,7 @@ export class Ftse {
     this.updatePriceDetails(devPrice);
   }
 
-  fetchLivePrice(symbol = this.assetData.API_SYMBOL) {
+  fetchLivePrice(symbol = this.ftseApiSymbol) {
     this.loading = true;
     this.error = null;
     this.currentPrice = null;
