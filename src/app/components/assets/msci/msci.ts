@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-msci',
   imports: [],
   templateUrl: './msci.html',
-  styleUrl: './msci.scss'
+  styleUrl: './msci.scss',
 })
-export class Msci {
-
-}
+export class Msci {}
