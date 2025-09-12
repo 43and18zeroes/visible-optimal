@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { secrets } from '../../environments/environment.secret';
 
-
 type GlobalQuoteResponse = {
   ['Global Quote']?: {
     ['05. price']?: string;

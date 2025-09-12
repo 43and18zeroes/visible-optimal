@@ -24,7 +24,7 @@ export class DeviceService {
   constructor(
     rendererFactory: RendererFactory2,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router,
+    private router: Router
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
 

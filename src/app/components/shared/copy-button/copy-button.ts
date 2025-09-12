@@ -17,11 +17,10 @@ export class CopyButton {
   copied = false;
 
   copyToClipboard(e?: Event) {
-    // Verhindert ggf. Doppelfeuer auf Mobile, s.u.
     e?.preventDefault();
 
     const ok = this.clipboard.copy(this.value);
-    this.copied = ok; // true, wenn erfolgreich (inkl. Fallback)
+    this.copied = ok;
     if (ok) setTimeout(() => (this.copied = false), 3000);
   }
 }
