@@ -1,12 +1,12 @@
-<h2>{{ assetData.PRODUCT_NAME }}</h2>
+<h2>{{ fAmountsData.PRODUCT_NAME }}</h2>
 
 <table>
   <tr>
     <td class="text__accent">ISIN</td>
     <td class="product__info">
-      {{ assetData.PRODUCT_ISIN }}
+      {{ fAmountsData.PRODUCT_ISIN }}
       <app-copy-button
-        [value]="assetData.PRODUCT_ISIN"
+        [value]="fAmountsData.PRODUCT_ISIN"
         label="Copy ISIN"
       ></app-copy-button>
     </td>
@@ -14,9 +14,9 @@
   <tr>
     <td class="text__accent">WKN</td>
     <td class="product__info">
-      {{ assetData.PRODUCT_WKN }}
+      {{ fAmountsData.PRODUCT_WKN }}
       <app-copy-button
-        [value]="assetData.PRODUCT_WKN"
+        [value]="fAmountsData.PRODUCT_WKN"
         label="Copy ISIN"
       ></app-copy-button>
     </td>
@@ -43,7 +43,7 @@
 >
 </app-asset-details> -->
 <app-asset-details
-  [amounts]="assetData"
+  [assetData]="fAmountsData"
   [currentPrice]="currentPrice">
 >
 </app-asset-details>

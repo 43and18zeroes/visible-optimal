@@ -15,7 +15,7 @@ export class Ftse {
   financialData = inject(FinancialDataService);
 
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
-  assetData = ASSETS_DATA.FTSE.F_AMOUNTS;
+  fAmountsData = ASSETS_DATA.FTSE.F_AMOUNTS;
 
   
   currentPrice: number | null = null;
@@ -60,6 +60,6 @@ export class Ftse {
   }
 
   calculateVolume(stockPrice: number) {
-    return this.assetData.AMOUNT * stockPrice;
+    return this.fAmountsData.AMOUNT * stockPrice;
   }
 }

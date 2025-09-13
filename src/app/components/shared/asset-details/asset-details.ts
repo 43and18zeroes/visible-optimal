@@ -21,28 +21,28 @@ export interface HoldingAmounts {
 export class AssetDetails implements OnChanges {
   currencyPipe = inject(CurrencyPipe);
 
-  @Input({ required: true }) amounts!: HoldingAmounts;
+  @Input({ required: true }) assetData!: HoldingAmounts;
   @Input() currentPrice: number | null = null; // falls du später wieder von außen setzt
 
   purchaseDate: Date | null = null;
   currentVolume: number | null = null;
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('amounts' in changes && this.amounts) {
-      this.purchaseDate = new Date(this.amounts.PURCHASE_DATE);
+    if ('amounts' in changes && this.assetData) {
+      this.purchaseDate = new Date(this.assetData.PURCHASE_DATE);
       // falls currentPrice schon gesetzt ist, gleich das Volumen aktualisieren
       if (this.currentPrice != null) {
         this.currentVolume = this.calculateVolume(this.currentPrice);
       }
     }
-    if ('currentPrice' in changes && this.currentPrice != null && this.amounts) {
+    if ('currentPrice' in changes && this.currentPrice != null && this.assetData) {
       this.currentVolume = this.calculateVolume(this.currentPrice);
     }
   }
 
   get initialVolume(): number | null {
-    if (!this.amounts) return null;
-    return this.calculateVolume(this.amounts.INITIAL_PRICE);
+    if (!this.assetData) return null;
+    return this.calculateVolume(this.assetData.INITIAL_PRICE);
   }
 
   get profitEuro(): number | null {
@@ -51,8 +51,8 @@ export class AssetDetails implements OnChanges {
   }
 
   get profitPercent(): number | null {
-    if (this.currentPrice == null || !this.amounts) return null;
-    return ((this.currentPrice - this.amounts.INITIAL_PRICE) / this.amounts.INITIAL_PRICE) * 100;
+    if (this.currentPrice == null || !this.assetData) return null;
+    return ((this.currentPrice - this.assetData.INITIAL_PRICE) / this.assetData.INITIAL_PRICE) * 100;
   }
 
   formatCurrency(value: number | null): string {
@@ -61,6 +61,6 @@ export class AssetDetails implements OnChanges {
   }
 
   calculateVolume(stockPrice: number) {
-    return (this.amounts?.AMOUNT ?? 0) * stockPrice;
+    return (this.assetData?.AMOUNT ?? 0) * stockPrice;
   }
 }
