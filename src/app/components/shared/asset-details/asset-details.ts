@@ -28,7 +28,7 @@ export class AssetDetails implements OnChanges {
   currentVolume: number | null = null;
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('amounts' in changes && this.assetData) {
+    if ('assetData' in changes && this.assetData) {
       this.purchaseDate = new Date(this.assetData.PURCHASE_DATE);
       // falls currentPrice schon gesetzt ist, gleich das Volumen aktualisieren
       if (this.currentPrice != null) {
