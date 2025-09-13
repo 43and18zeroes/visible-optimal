@@ -17,16 +17,11 @@ export class Ftse {
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
   fAmountsData = ASSETS_DATA.FTSE.F_AMOUNTS;
 
-  
   currentPrice: number | null = null;
   currentVolume: number | null = null;
 
   loading = false;
   error: string | null = null;
-
-  
-
-
 
   fetchDevPrice() {
     const devPrice: number = 200; // Mock price for development
