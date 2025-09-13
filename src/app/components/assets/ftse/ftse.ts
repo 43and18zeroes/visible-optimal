@@ -51,10 +51,6 @@ export class Ftse {
 
   updatePriceDetails(currentPrice: number) {
     this.currentPrice = currentPrice;
-    this.currentVolume = this.calculateVolume(currentPrice);
-  }
-
-  calculateVolume(stockPrice: number) {
-    return this.fAmountsData.AMOUNT * stockPrice;
+    this.currentVolume = this.fAmountsData.AMOUNT * currentPrice;
   }
 }
