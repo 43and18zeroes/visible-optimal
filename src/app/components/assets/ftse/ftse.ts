@@ -17,30 +17,16 @@ export class Ftse {
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
   assetData = ASSETS_DATA.FTSE.F_AMOUNTS;
 
-  purchaseDate = new Date(this.assetData.PURCHASE_DATE);
+  
   currentPrice: number | null = null;
   currentVolume: number | null = null;
 
   loading = false;
   error: string | null = null;
 
-  get initialVolume(): number {
-    return this.calculateVolume(this.assetData.INITIAL_PRICE);
-  }
+  
 
-  get profitEuro(): number | null {
-    if (this.currentVolume === null) return null;
-    return this.currentVolume - this.initialVolume;
-  }
 
-  get profitPercent(): number | null {
-    if (this.currentPrice === null) return null;
-    return (
-      ((this.currentPrice - this.assetData.INITIAL_PRICE) /
-        this.assetData.INITIAL_PRICE) *
-      100
-    );
-  }
 
   fetchDevPrice() {
     const devPrice: number = 200; // Mock price for development

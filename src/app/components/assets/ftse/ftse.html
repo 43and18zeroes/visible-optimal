@@ -24,7 +24,7 @@
 </table>
 
 <button
-  (click)="fetchLivePrice()"
+  (click)="fetchDevPrice()"
   matButton="tonal"
   type="submit"
   class="submit-btn"
@@ -32,7 +32,7 @@
   Kurs abrufen
 </button>
 
-<app-asset-details
+<!-- <app-asset-details
   [amounts]="assetData"
   [purchaseDate]="purchaseDate"
   [initialVolume]="initialVolume"
@@ -40,5 +40,10 @@
   [currentVolume]="currentVolume"
   [profitEuro]="profitEuro"
   [profitPercent]="profitPercent"
+>
+</app-asset-details> -->
+<app-asset-details
+  [amounts]="assetData"
+  [currentPrice]="currentPrice">
 >
 </app-asset-details>
