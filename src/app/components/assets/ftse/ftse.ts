@@ -16,10 +16,11 @@ export class Ftse {
 
   ftseData = ASSETS_DATA.FTSE;
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
-  fAmountsData = ASSETS_DATA.FTSE.F_AMOUNTS;
+  fAmountsData001 = ASSETS_DATA.FTSE.F_AMOUNTS_001;
+  cAmountsData001 = ASSETS_DATA.FTSE.C_AMOUNTS_001;
 
   currentPrice: number | null = null;
-  currentVolume: number | null = null;
+  // currentVolume: number | null = null;
 
   loading = false;
   error: string | null = null;
@@ -52,6 +53,6 @@ export class Ftse {
 
   updatePriceDetails(currentPrice: number) {
     this.currentPrice = currentPrice;
-    this.currentVolume = this.fAmountsData.AMOUNT * currentPrice;
+    // this.currentVolume = this.fAmountsData001.AMOUNT * currentPrice;
   }
 }
