@@ -26,8 +26,7 @@ export class Ftse {
   error: string | null = null;
 
   fetchDevPrice() {
-    const devPrice: number = 200; // Mock price for development
-    this.updatePriceDetails(devPrice);
+    this.currentPrice = 200; // Mock price for development
   }
 
   fetchLivePrice(symbol = this.ftseApiSymbol) {
@@ -37,7 +36,7 @@ export class Ftse {
 
     this.financialData.getGlobalQuote(symbol).subscribe({
       next: (price) => {
-        this.updatePriceDetails(price);
+        this.currentPrice = price;
         this.loading = false;
       },
       error: (err: unknown) => {
@@ -49,10 +48,5 @@ export class Ftse {
         this.loading = false;
       },
     });
-  }
-
-  updatePriceDetails(currentPrice: number) {
-    this.currentPrice = currentPrice;
-    // this.currentVolume = this.fAmountsData001.AMOUNT * currentPrice;
   }
 }
