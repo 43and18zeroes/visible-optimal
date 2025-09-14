@@ -2,9 +2,6 @@ import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 
 export interface HoldingAmounts {
-  PRODUCT_NAME: string;
-  PRODUCT_ISIN: string;
-  PRODUCT_WKN: string;
   PURCHASE_DATE: string | number | Date;
   AMOUNT: number;
   INITIAL_PRICE: number;

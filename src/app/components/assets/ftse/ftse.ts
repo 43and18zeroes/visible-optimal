@@ -14,6 +14,7 @@ import { ASSETS_DATA } from '../../../constants';
 export class Ftse {
   financialData = inject(FinancialDataService);
 
+  ftseData = ASSETS_DATA.FTSE;
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
   fAmountsData = ASSETS_DATA.FTSE.F_AMOUNTS;
 

@@ -1,12 +1,12 @@
-<h2>{{ fAmountsData.PRODUCT_NAME }}</h2>
+<h2>{{ ftseData.PRODUCT_NAME }}</h2>
 
 <table>
   <tr>
     <td class="text__accent">ISIN</td>
     <td class="product__info">
-      {{ fAmountsData.PRODUCT_ISIN }}
+      {{ ftseData.PRODUCT_ISIN }}
       <app-copy-button
-        [value]="fAmountsData.PRODUCT_ISIN"
+        [value]="ftseData.PRODUCT_ISIN"
         label="Copy ISIN"
       ></app-copy-button>
     </td>
@@ -14,9 +14,9 @@
   <tr>
     <td class="text__accent">WKN</td>
     <td class="product__info">
-      {{ fAmountsData.PRODUCT_WKN }}
+      {{ ftseData.PRODUCT_WKN }}
       <app-copy-button
-        [value]="fAmountsData.PRODUCT_WKN"
+        [value]="ftseData.PRODUCT_WKN"
         label="Copy ISIN"
       ></app-copy-button>
     </td>
