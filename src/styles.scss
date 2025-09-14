@@ -46,6 +46,16 @@ h1, h2 {
   font-weight: 500;
 }
 
+.table__row {
+  display: flex;
+  gap: 32px;
+
+  @media (width < 580px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
 td {
   font-size: 20px;
 }
