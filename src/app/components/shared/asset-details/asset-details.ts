@@ -5,7 +5,7 @@ export interface AssetData {
   PURCHASE_DATE: string | number | Date;
   AMOUNT: number;
   INITIAL_PRICE: number;
-  NOTE: string;
+  NOTE?: string;
 }
 
 @Component({
