@@ -42,4 +42,10 @@
       {{ profitPercent | number : "1.2-2" : "de" }} % }
     </td>
   </tr>
+  @if (assetData.NOTE) {
+    <tr>
+      <td class="text__accent">Besitzer</td>
+      <td> {{ assetData.NOTE }}</td>
+    </tr>
+  }
 </table>

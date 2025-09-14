@@ -1,10 +1,11 @@
 import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 
-export interface HoldingAmounts {
+export interface AssetData {
   PURCHASE_DATE: string | number | Date;
   AMOUNT: number;
   INITIAL_PRICE: number;
+  NOTE: string;
 }
 
 @Component({
@@ -18,7 +19,7 @@ export interface HoldingAmounts {
 export class AssetDetails implements OnChanges {
   currencyPipe = inject(CurrencyPipe);
 
-  @Input({ required: true }) assetData!: HoldingAmounts;
+  @Input({ required: true }) assetData!: AssetData;
   @Input() currentPrice: number | null = null; // falls du später wieder von außen setzt
 
   purchaseDate: Date | null = null;
