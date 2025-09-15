@@ -4,10 +4,11 @@ import { CopyButton } from '../../shared/copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { MatButtonModule } from '@angular/material/button';
 import { ASSETS_DATA } from '../../../constants';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ftse',
-  imports: [AssetDetails, CopyButton, MatButtonModule],
+  imports: [AssetDetails, CopyButton, MatButtonModule, CommonModule],
   templateUrl: './ftse.html',
   styleUrl: './ftse.scss',
 })
@@ -20,10 +21,13 @@ export class Ftse {
   cAmountsData001 = ASSETS_DATA.FTSE.C_AMOUNTS_001;
 
   currentPrice: number | null = null;
-  // currentVolume: number | null = null;
 
   loading = false;
   error: string | null = null;
+
+  assetRows: any[] = [
+    [this.fAmountsData001, this.cAmountsData001],
+  ];
 
   fetchDevPrice() {
     this.currentPrice = 200; // Mock price for development
