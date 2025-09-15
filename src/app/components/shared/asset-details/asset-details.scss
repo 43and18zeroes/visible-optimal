@@ -1,5 +1,18 @@
-th {
-  text-align: left;
-  font-size: 20px;
-  font-weight: 500;
+table {
+  td:nth-child(2),
+  th:nth-child(2) {
+    width: 120px;
+  }
+
+  th {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  tr {
+    td:first-child {
+      padding-right: 10px;
+    }
+  }
 }

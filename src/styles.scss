@@ -1,33 +1,37 @@
 @use "@angular/material" as mat;
 
-
 html {
   color-scheme: light dark;
-  @include mat.theme((
-    color: mat.$azure-palette,
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
 .darkMode {
   color-scheme: dark;
-  @include mat.theme((
-    color: mat.$azure-palette,
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
 .lightMode {
   color-scheme: light;
-  @include mat.theme((
-    color: mat.$azure-palette,
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
-
 
 html,
 body {
@@ -42,7 +46,8 @@ h2 {
   margin-top: 8px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: 500;
 }
 
@@ -56,14 +61,20 @@ h1, h2 {
   }
 }
 
-td {
-  font-size: 20px;
-}
-
 .text__accent {
   color: light-dark(#56575b, #bbb9be);
 }
 
-table tr td:first-child {
-  padding-right: 10px;
+table {
+
+  tr {
+
+    td {
+      font-size: 20px;
+    }
+    
+    td:first-child {
+      padding-right: 10px;
+    }
+  }
 }

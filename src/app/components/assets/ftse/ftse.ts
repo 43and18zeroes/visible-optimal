@@ -25,9 +25,7 @@ export class Ftse {
   loading = false;
   error: string | null = null;
 
-  assetRows: any[] = [
-    [this.fAmountsData001, this.cAmountsData001],
-  ];
+  assetRows: any[] = [[this.fAmountsData001, this.cAmountsData001]];
 
   fetchDevPrice() {
     this.currentPrice = 200; // Mock price for development
@@ -52,5 +50,9 @@ export class Ftse {
         this.loading = false;
       },
     });
+  }
+
+  trackByAsset(index: number, asset: any): string {
+    return asset.name; // Hier kannst du auch andere eindeutige Identifikatoren verwenden
   }
 }
