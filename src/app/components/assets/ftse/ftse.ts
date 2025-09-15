@@ -16,15 +16,15 @@ export class Ftse {
 
   ftseData = ASSETS_DATA.FTSE;
   ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
-  fAmountsData001 = ASSETS_DATA.FTSE.F_AMOUNTS_001;
-  cAmountsData001 = ASSETS_DATA.FTSE.C_AMOUNTS_001;
+  fAmountsData000 = ASSETS_DATA.FTSE.F_AMOUNTS_000;
+  cAmountsData000 = ASSETS_DATA.FTSE.C_AMOUNTS_000;
 
   currentPrice: number | null = null;
 
   loading = false;
   error: string | null = null;
 
-  assetRows: any[] = [[this.fAmountsData001, this.cAmountsData001]];
+  assetRows: any[] = [[this.fAmountsData000, this.cAmountsData000]];
 
   fetchDevPrice() {
     this.currentPrice = 200; // Mock price for development
