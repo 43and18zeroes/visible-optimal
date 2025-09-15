@@ -24,7 +24,7 @@
 </table>
 
 <button
-  (click)="fetchLivePrice()"
+  (click)="fetchDevPrice()"
   matButton="tonal"
   type="submit"
   class="submit-btn"
@@ -33,15 +33,16 @@
 </button>
 
 <div class="table__row">
-<app-asset-details
-  [assetData]="fAmountsData001"
-  [currentPrice]="currentPrice">
->
-</app-asset-details>
-<app-asset-details
-  [assetData]="cAmountsData001"
-  [currentPrice]="currentPrice">
->
-</app-asset-details>
-
+  <app-asset-details
+    [assetData]="fAmountsData001"
+    [currentPrice]="currentPrice"
+  >
+    >
+  </app-asset-details>
+  <app-asset-details
+    [assetData]="cAmountsData001"
+    [currentPrice]="currentPrice"
+  >
+    >
+  </app-asset-details>
 </div>
