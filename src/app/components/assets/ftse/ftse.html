@@ -33,10 +33,14 @@
 </button>
 
 @for (row of assetRows; track row.name) {
-  <div class="table__row">
+<div class="table__row">
   @for (assetData of row; track assetData.name) {
-    <app-asset-details [assetData]="assetData"
-    [currentPrice]="currentPrice"></app-asset-details>
+  <app-asset-details
+    [assetData]="assetData"
+    [currentPrice]="currentPrice"
+  ></app-asset-details>
   }
-  </div>
+</div>
+} @empty {
+<div>No assets found.</div>
 }
