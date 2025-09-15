@@ -4,11 +4,10 @@ import { CopyButton } from '../../shared/copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { MatButtonModule } from '@angular/material/button';
 import { ASSETS_DATA } from '../../../constants';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ftse',
-  imports: [AssetDetails, CopyButton, MatButtonModule, CommonModule],
+  imports: [AssetDetails, CopyButton, MatButtonModule],
   templateUrl: './ftse.html',
   styleUrl: './ftse.scss',
 })
@@ -50,9 +49,5 @@ export class Ftse {
         this.loading = false;
       },
     });
-  }
-
-  trackByAsset(index: number, asset: any): string {
-    return asset.name; // Hier kannst du auch andere eindeutige Identifikatoren verwenden
   }
 }
