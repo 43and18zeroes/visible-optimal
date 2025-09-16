@@ -31,7 +31,7 @@ export class Ftse {
     this.financialData.fetchDevPrice();
   }
 
-  fetchLivePrice(symbol = this.ftseApiSymbol) {
-    this.financialData.fetchLivePrice(symbol);
+  fetchLivePrice(apiSymbol: string) {
+    this.financialData.fetchLivePrice(apiSymbol);
   }
 }
