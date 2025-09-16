@@ -1,40 +1,13 @@
-<h2>{{ ftseData.PRODUCT_NAME }}</h2>
+<app-product-details
+  [productName]="ftseData.PRODUCT_NAME"
+  [productIsin]="ftseData.PRODUCT_ISIN"
+  [productWkn]="ftseData.PRODUCT_WKN"
+  (fetchPrice)="fetchDevPrice()">
+</app-product-details>
 
-<table>
-  <tr>
-    <td class="text__accent">ISIN</td>
-    <td class="product__info">
-      {{ ftseData.PRODUCT_ISIN }}
-      <app-copy-button
-        [value]="ftseData.PRODUCT_ISIN"
-        label="Copy ISIN"
-      ></app-copy-button>
-    </td>
-  </tr>
-  <tr>
-    <td class="text__accent">WKN</td>
-    <td class="product__info">
-      {{ ftseData.PRODUCT_WKN }}
-      <app-copy-button
-        [value]="ftseData.PRODUCT_WKN"
-        label="Copy ISIN"
-      ></app-copy-button>
-    </td>
-  </tr>
-</table>
-
-<button
-  (click)="fetchDevPrice()"
-  matButton="tonal"
-  type="submit"
-  class="submit-btn"
->
-  Kurs abrufen
-</button>
-
-@for (row of assetRows; track row.name) {
+@for (row of assetRows; track $index) {
 <div class="table__row">
-  @for (assetData of row; track assetData.name) {
+  @for (assetData of row; track $index) {
   <app-asset-details
     [assetData]="assetData"
     [currentPrice]="currentPrice"

@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AssetDetails } from '../../shared/asset-details/asset-details';
-import { CopyButton } from '../../shared/copy-button/copy-button';
 import { FinancialDataService } from '../../../services/financial-data-service';
-import { MatButtonModule } from '@angular/material/button';
 import { ASSETS_DATA } from '../../../constants';
+import { ProductDetails } from "../../shared/product-details/product-details";
 
 @Component({
   selector: 'app-ftse',
-  imports: [AssetDetails, CopyButton, MatButtonModule],
+  imports: [AssetDetails, ProductDetails],
   templateUrl: './ftse.html',
   styleUrl: './ftse.scss',
 })

@@ -1,0 +1,33 @@
+<h2>{{ productName }}</h2>
+
+<table>
+  <tr>
+    <td class="text__accent">ISIN</td>
+    <td class="product__info">
+      {{ productIsin }}
+      <app-copy-button
+        [value]="productIsin"
+        label="Copy ISIN"
+      ></app-copy-button>
+    </td>
+  </tr>
+  <tr>
+    <td class="text__accent">WKN</td>
+    <td class="product__info">
+      {{ productWkn }}
+      <app-copy-button
+        [value]="productWkn"
+        label="Copy WKN"
+      ></app-copy-button>
+    </td>
+  </tr>
+</table>
+
+<button
+  (click)="onFetchPrice()"
+  matButton="tonal"
+  type="submit"
+  class="submit-btn"
+>
+  Kurs abrufen
+</button>
