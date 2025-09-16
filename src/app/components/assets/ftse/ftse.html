@@ -2,7 +2,8 @@
   [productName]="ftseData.PRODUCT_NAME"
   [productIsin]="ftseData.PRODUCT_ISIN"
   [productWkn]="ftseData.PRODUCT_WKN"
-  (fetchPrice)="fetchDevPrice()">
+  (fetchPrice)="fetchDevPrice()"
+>
 </app-product-details>
 
 @for (row of assetRows; track $index) {

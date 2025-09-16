@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { secrets } from '../../environments/environment.secret';
 
 type GlobalQuoteResponse = {
@@ -16,6 +16,12 @@ type GlobalQuoteResponse = {
 })
 export class FinancialDataService {
   private readonly baseUrl = 'https://www.alphavantage.co/query';
+
+  private currentPriceSubject = new BehaviorSubject<number | null>(null);
+  currentPrice$ = this.currentPriceSubject.asObservable();
+
+  loading = false;
+  error: string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -39,5 +45,23 @@ export class FinancialDataService {
         return price;
       })
     );
+  }
+
+  fetchDevPrice() {
+    const price = 200; // Mock price for development
+    this.currentPriceSubject.next(price);
+  }
+
+  fetchLivePrice(apySymbol: string) {
+    this.currentPriceSubject.next(null); // Set to null while fetching
+    this.getGlobalQuote(apySymbol).subscribe({
+      next: (price) => {
+        this.currentPriceSubject.next(price);
+      },
+      error: (err: unknown) => {
+        console.error(err);
+        this.currentPriceSubject.next(null);
+      },
+    });
   }
 }
