@@ -33,10 +33,13 @@
       {{ formatCurrency(currentVolume) }}
     </td>
   </tr>
+  <tr></tr>
   <tr>
     <td class="text__accent">Rendite</td>
     <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
-      {{ formatCurrency(profitEuro) }}
+      @if (profitEuro !== null) {
+        {{ profitEuro! > 0 ? "+" : "" }}{{ formatCurrency(profitEuro) }}
+      }
     </td>
   </tr>
   <tr>
