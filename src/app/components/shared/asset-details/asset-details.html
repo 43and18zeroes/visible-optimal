@@ -29,11 +29,15 @@
   </tr>
   <tr>
     <td class="text__accent">Volumen</td>
-    <td>{{ formatCurrency(currentVolume) }}</td>
+    <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
+      {{ formatCurrency(currentVolume) }}
+    </td>
   </tr>
   <tr>
     <td class="text__accent">Rendite</td>
-    <td>{{ formatCurrency(profitEuro) }}</td>
+    <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
+      {{ formatCurrency(profitEuro) }}
+    </td>
   </tr>
   <tr>
     <td class="text__accent">Prozent</td>
@@ -43,9 +47,9 @@
     </td>
   </tr>
   @if (assetData.NOTE) {
-    <tr>
-      <td class="text__accent">Besitzer</td>
-      <td> {{ assetData.NOTE }}</td>
-    </tr>
+  <tr>
+    <td class="text__accent">Besitzer</td>
+    <td>{{ assetData.NOTE }}</td>
+  </tr>
   }
 </table>

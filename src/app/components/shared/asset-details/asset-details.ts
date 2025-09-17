@@ -1,4 +1,10 @@
-import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 
 export interface AssetData {
@@ -15,7 +21,6 @@ export interface AssetData {
   templateUrl: './asset-details.html',
   styleUrl: './asset-details.scss',
 })
-
 export class AssetDetails implements OnChanges {
   currencyPipe = inject(CurrencyPipe);
 
@@ -25,6 +30,14 @@ export class AssetDetails implements OnChanges {
   purchaseDate: Date | null = null;
   currentVolume: number | null = null;
 
+  get trend(): 'up' | 'down' | 'flat' | null {
+    if (this.currentPrice == null || !this.assetData) return null;
+    const diff = this.currentPrice - this.assetData.INITIAL_PRICE;
+    if (diff > 0) return 'up';
+    if (diff < 0) return 'down';
+    return 'flat';
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if ('assetData' in changes && this.assetData) {
       this.purchaseDate = new Date(this.assetData.PURCHASE_DATE);
@@ -33,7 +46,11 @@ export class AssetDetails implements OnChanges {
         this.currentVolume = this.calculateVolume(this.currentPrice);
       }
     }
-    if ('currentPrice' in changes && this.currentPrice != null && this.assetData) {
+    if (
+      'currentPrice' in changes &&
+      this.currentPrice != null &&
+      this.assetData
+    ) {
       this.currentVolume = this.calculateVolume(this.currentPrice);
     }
   }
@@ -50,12 +67,18 @@ export class AssetDetails implements OnChanges {
 
   get profitPercent(): number | null {
     if (this.currentPrice == null || !this.assetData) return null;
-    return ((this.currentPrice - this.assetData.INITIAL_PRICE) / this.assetData.INITIAL_PRICE) * 100;
+    return (
+      ((this.currentPrice - this.assetData.INITIAL_PRICE) /
+        this.assetData.INITIAL_PRICE) *
+      100
+    );
   }
 
   formatCurrency(value: number | null): string {
     if (value == null) return '';
-    return this.currencyPipe.transform(value, 'EUR', 'symbol', '1.2-2', 'de') ?? '';
+    return (
+      this.currencyPipe.transform(value, 'EUR', 'symbol', '1.2-2', 'de') ?? ''
+    );
   }
 
   calculateVolume(stockPrice: number) {
