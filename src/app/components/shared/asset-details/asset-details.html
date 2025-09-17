@@ -29,7 +29,7 @@
   </tr>
   <tr>
     <td class="text__accent">Volumen</td>
-    <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
+    <td>
       {{ formatCurrency(currentVolume) }}
     </td>
   </tr>
@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td class="text__accent">Prozent</td>
-    <td>
+    <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
       @if (profitPercent !== null) {
       {{ profitPercent | number : "1.2-2" : "de" }} % }
     </td>
