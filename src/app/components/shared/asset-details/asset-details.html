@@ -38,7 +38,7 @@
     <td class="text__accent">Rendite</td>
     <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
       @if (profitEuro !== null) {
-        {{ profitEuro! > 0 ? "+" : "" }}{{ formatCurrency(profitEuro) }}
+      {{ profitEuro! > 0 ? "+" : "" }}{{ formatCurrency(profitEuro) }}
       }
     </td>
   </tr>
@@ -46,7 +46,8 @@
     <td class="text__accent">Prozent</td>
     <td [class.text--pos]="trend === 'up'" [class.text--neg]="trend === 'down'">
       @if (profitPercent !== null) {
-      {{ profitPercent | number : "1.2-2" : "de" }} % }
+      {{ profitPercent! > 0 ? "+" : ""
+      }}{{ profitPercent | number : "1.2-2" : "de" }} % }
     </td>
   </tr>
   @if (assetData.NOTE) {
