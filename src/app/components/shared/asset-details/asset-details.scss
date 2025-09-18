@@ -4,18 +4,23 @@ table {
     width: 120px;
   }
 
-  th {
-    text-align: left;
-    font-size: 20px;
-    font-weight: 500;
-  }
-
   tr {
+    th {
+      text-align: left;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
     td:first-child {
       padding-right: 10px;
     }
+
+    .text--pos {
+      color: light-dark(#28a745, #28ebcf);
+    }
+
+    .text--neg {
+      color: light-dark(#dc3545, #f79880);
+    }
   }
 }
-
-.text--pos { color: #16a34a; } // grün
-.text--neg { color: #dc2626; } // rot
