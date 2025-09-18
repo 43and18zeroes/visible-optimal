@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { AssetDetails } from '../../shared/asset-details/asset-details';
 import { FinancialDataService } from '../../../services/financial-data-service';
-import { ASSETS_DATA } from '../../../constants';
 import { ProductDetails } from '../../shared/product-details/product-details';
+import { FTSE } from '../../../constants';
 
 @Component({
   selector: 'app-ftse',
@@ -15,10 +15,10 @@ export class Ftse {
 
   currentPrice: number | null = null;
 
-  ftseData = ASSETS_DATA.FTSE;
-  ftseApiSymbol = ASSETS_DATA.FTSE.API_SYMBOL;
-  fAmountsData000 = ASSETS_DATA.FTSE.F_AMOUNTS_000;
-  cAmountsData000 = ASSETS_DATA.FTSE.C_AMOUNTS_000;
+  ftseData = FTSE;
+  ftseApiSymbol = FTSE.API_SYMBOL;
+  fAmountsData000 = FTSE.F_AMOUNTS_000;
+  cAmountsData000 = FTSE.C_AMOUNTS_000;
   assetRows: any[] = [[this.fAmountsData000, this.cAmountsData000]];
 
   ngOnInit() {

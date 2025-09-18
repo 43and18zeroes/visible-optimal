@@ -1,1 +1,20 @@
-<p>msci works!</p>
+<app-product-details
+  [productName]="msciData.PRODUCT_NAME"
+  [productIsin]="msciData.PRODUCT_ISIN"
+  [productWkn]="msciData.PRODUCT_WKN"
+  (fetchPrice)="fetchDevPrice()"
+>
+</app-product-details>
+
+@for (row of assetRows; track $index) {
+<div class="table__row">
+  @for (assetData of row; track $index) {
+  <app-asset-details
+    [assetData]="assetData"
+    [currentPrice]="currentPrice"
+  ></app-asset-details>
+  }
+</div>
+} @empty {
+<div>No assets found.</div>
+}
