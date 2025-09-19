@@ -9,6 +9,7 @@ export type MenuItem = {
   icon: string;
   label: string;
   component: string;
+  imgSrc: string;
 };
 
 @Component({
@@ -20,6 +21,7 @@ export type MenuItem = {
 export class CustomSidenav {
   switcher = inject(ComponentSwitchService);
   sideNavCollapsed = signal(false);
+  srcPath = "public/"
 
   @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
@@ -43,16 +45,25 @@ export class CustomSidenav {
       icon: 'insightsinsights',
       label: 'Overview',
       component: 'overview',
+      imgSrc: `overview.png`,
     },
     {
       icon: 'filter_alt',
       label: 'FTSE',
       component: 'ftse',
+      imgSrc: `vanguard.png`,
     },
     {
       icon: 'filter_alt',
       label: 'MSCI',
       component: 'msci',
+      imgSrc: `ishares.png`,
+    },
+    {
+      icon: 'filter_alt',
+      label: 'Bitcoin',
+      component: 'msci',
+      imgSrc: `coin.png`,
     },
   ]);
 }

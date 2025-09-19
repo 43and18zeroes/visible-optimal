@@ -7,7 +7,7 @@
     [class.selected-menu-item]="active() === item.component"
     [attr.aria-current]="active() === item.component ? 'page' : null"
   >
-    <mat-icon
+    <!-- <mat-icon
       matListItemIcon
       [fontSet]="
         active() === item.component
@@ -17,7 +17,9 @@
       [style.marginLeft]="iconMargin()"
     >
       {{ item.icon }}
-    </mat-icon>
+    </mat-icon> -->
+
+    <img [src]="item.imgSrc" alt="" />
 
     @if (!sideNavCollapsed()) {
     <span matListItemTitle>{{ item.label }}</span>
