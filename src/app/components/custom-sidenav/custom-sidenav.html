@@ -1,5 +1,17 @@
 <mat-nav-list>
   @for (item of menuItems(); track item.component) {
+  <li (click)="renderComponent(item.component)">
+      <img [src]="item.imgSrc" alt="" />
+
+      @if (!sideNavCollapsed()) {
+      <span matListItemTitle>{{ item.label }}</span>
+      }
+  </li>
+  }
+</mat-nav-list>
+
+<!-- <mat-nav-list>
+  @for (item of menuItems(); track item.component) {
   <a
     mat-list-item
     (click)="renderComponent(item.component)"
@@ -7,7 +19,7 @@
     [class.selected-menu-item]="active() === item.component"
     [attr.aria-current]="active() === item.component ? 'page' : null"
   >
-    <!-- <mat-icon
+    <mat-icon
       matListItemIcon
       [fontSet]="
         active() === item.component
@@ -17,13 +29,11 @@
       [style.marginLeft]="iconMargin()"
     >
       {{ item.icon }}
-    </mat-icon> -->
-
-    <img [src]="item.imgSrc" alt="" />
+    </mat-icon>
 
     @if (!sideNavCollapsed()) {
     <span matListItemTitle>{{ item.label }}</span>
     }
   </a>
   }
-</mat-nav-list>
+</mat-nav-list> -->
