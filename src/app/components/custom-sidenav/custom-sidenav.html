@@ -1,14 +1,12 @@
-<mat-nav-list>
-  @for (item of menuItems(); track item.component) {
-  <li (click)="renderComponent(item.component)">
-      <img [src]="item.imgSrc" alt="" />
+@for (item of menuItems(); track item.component) {
+<li (click)="renderComponent(item.component)">
+  <img [src]="item.imgSrc" alt="" />
 
-      @if (!sideNavCollapsed()) {
-      <span matListItemTitle>{{ item.label }}</span>
-      }
-  </li>
+  @if (!sideNavCollapsed()) {
+  <span matListItemTitle>{{ item.label }}</span>
   }
-</mat-nav-list>
+</li>
+}
 
 <!-- <mat-nav-list>
   @for (item of menuItems(); track item.component) {
