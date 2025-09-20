@@ -2,6 +2,9 @@
   <button mat-icon-button (click)="collapsed.set(!collapsed())">
     <mat-icon>menu</mat-icon>
   </button>
+  <button mat-icon-button (click)="onPrint()" aria-label="Print content">
+    <mat-icon>print</mat-icon>
+  </button>
   <button
     mat-icon-button
     (click)="themeService.toggleTheme()"

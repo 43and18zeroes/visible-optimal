@@ -57,3 +57,27 @@ mat-sidenav-container {
 .iphone__height {
   height: calc(100vh - 164px);
 }
+
+
+@media print {
+  mat-toolbar,
+  mat-sidenav {
+    display: none !important;
+  }
+
+  mat-sidenav-container {
+    // Verhindert, dass ein leeres Sidenav Platz lässt
+    grid-template-columns: 0 !important;
+  }
+
+  mat-sidenav-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  /* Optional: animierte/wechselnde Bereiche neutralisieren */
+  .switch-anim {
+    animation: none !important;
+  }
+}

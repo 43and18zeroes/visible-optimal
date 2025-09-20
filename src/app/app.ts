@@ -10,7 +10,7 @@ import { DeviceService } from './services/device-service';
 import { Subscription } from 'rxjs';
 import { ComponentSwitchService } from './services/component-switch-service';
 import { Ftse } from './components/assets/ftse/ftse';
-import { Msci } from "./components/assets/msci/msci";
+import { Msci } from './components/assets/msci/msci';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +23,8 @@ import { Msci } from "./components/assets/msci/msci";
     MatSlideToggleModule,
     CustomSidenav,
     Ftse,
-    Msci
-],
+    Msci,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -72,6 +72,10 @@ export class App {
 
   collapseSidenav() {
     this.collapsed.set(true);
+  }
+
+  onPrint() {
+    window.print();
   }
 
   ngOnDestroy() {
