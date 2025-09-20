@@ -18,7 +18,8 @@ export class Msci {
   msciData = MSCI;
   msciApiSymbol = MSCI.API_SYMBOL;
   cAmountsData000 = MSCI.C_AMOUNTS_000;
-  assetRows: any[] = [[this.cAmountsData000]];
+  cAmountsData001 = MSCI.C_AMOUNTS_001;
+  assetRows: any[] = [[this.cAmountsData000, this.cAmountsData001]];
 
   ngOnInit() {
     this.financialData.currentPrice$.subscribe((price) => {

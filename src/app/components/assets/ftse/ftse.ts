@@ -19,7 +19,11 @@ export class Ftse {
   ftseApiSymbol = FTSE.API_SYMBOL;
   fAmountsData000 = FTSE.F_AMOUNTS_000;
   cAmountsData000 = FTSE.C_AMOUNTS_000;
-  assetRows: any[] = [[this.fAmountsData000, this.cAmountsData000]];
+  cAmountsData001 = FTSE.C_AMOUNTS_001;
+  assetRows: any[] = [
+    [this.fAmountsData000, this.cAmountsData000],
+    [this.cAmountsData001],
+  ];
 
   ngOnInit() {
     this.financialData.currentPrice$.subscribe((price) => {
