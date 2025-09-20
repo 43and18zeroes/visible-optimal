@@ -78,3 +78,9 @@ table {
     }
   }
 }
+
+@media print {
+  .print__hide {
+    display: none !important;
+  }
+}
