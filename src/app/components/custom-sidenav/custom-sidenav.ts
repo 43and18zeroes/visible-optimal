@@ -62,19 +62,19 @@ export class CustomSidenav {
     {
       icon: 'filter_alt',
       label: 'Gold',
-      component: 'msci',
+      component: 'overview',
       imgSrc: `bs.png`,
     },
     {
       icon: 'filter_alt',
       label: 'Bitwise',
-      component: 'msci',
+      component: 'overview',
       imgSrc: `bitwise.png`,
     },
     {
       icon: 'filter_alt',
       label: '21Shares',
-      component: 'msci',
+      component: 'overview',
       imgSrc: `21.jpg`,
     },
   ]);

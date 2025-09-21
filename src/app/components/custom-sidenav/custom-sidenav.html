@@ -1,6 +1,6 @@
 @for (item of menuItems(); track item.component) {
 <li (click)="renderComponent(item.component)">
-  <img [src]="item.imgSrc" alt="" />
+  <img [src]="item.imgSrc" alt="Asset Logo" />
 
   @if (!sideNavCollapsed()) {
   <span matListItemTitle>{{ item.label }}</span>
