@@ -66,13 +66,11 @@ h2 {
 }
 
 table {
-
   tr {
-
     td {
       font-size: 20px;
     }
-    
+
     td:first-child {
       padding-right: 10px;
     }
@@ -82,5 +80,13 @@ table {
 @media print {
   .print__hide {
     display: none !important;
+  }
+
+  .table__row {
+    margin-bottom: 8px;
+  }
+
+  .table__row:last-child {
+    margin-bottom: 0px;
   }
 }
