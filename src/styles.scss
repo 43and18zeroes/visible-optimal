@@ -77,6 +77,11 @@ table {
   }
 }
 
+.no__highlight {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 @media print {
   .print__hide {
     display: none !important;
