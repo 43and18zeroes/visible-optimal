@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { AssetDetails } from '../../shared/asset-details/asset-details';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { ProductDetails } from '../../shared/product-details/product-details';
 import { FTSE } from '../../../constants';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-ftse',
@@ -12,6 +13,7 @@ import { FTSE } from '../../../constants';
 })
 export class Ftse {
   financialData = inject(FinancialDataService);
+  destroyRef = inject(DestroyRef);
 
   currentPrice: number | null = null;
 
@@ -26,16 +28,17 @@ export class Ftse {
   ];
 
   ngOnInit() {
-    this.financialData.currentPrice$.subscribe((price) => {
-      this.currentPrice = price;
-    });
+    this.financialData
+      .getPrice$(this.ftseApiSymbol)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((price) => (this.currentPrice = price));
   }
 
   fetchDevPrice() {
-    this.financialData.fetchDevPrice();
+    this.financialData.fetchDevPrice(this.ftseApiSymbol);
   }
 
-  fetchLivePrice(apiSymbol: string) {
-    this.financialData.fetchLivePrice(apiSymbol);
+  fetchLivePrice() {
+    this.financialData.fetchLivePrice(this.ftseApiSymbol);
   }
 }

@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { ProductDetails } from '../../shared/product-details/product-details';
 import { AssetDetails } from '../../shared/asset-details/asset-details';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { MSCI } from '../../../constants';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-msci',
@@ -12,6 +13,7 @@ import { MSCI } from '../../../constants';
 })
 export class Msci {
   financialData = inject(FinancialDataService);
+  destroyRef = inject(DestroyRef);
 
   currentPrice: number | null = null;
 
@@ -22,16 +24,17 @@ export class Msci {
   assetRows: any[] = [[this.cAmountsData000, this.cAmountsData001]];
 
   ngOnInit() {
-    this.financialData.currentPrice$.subscribe((price) => {
-      this.currentPrice = price;
-    });
+    this.financialData
+      .getPrice$(this.msciApiSymbol)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((price) => (this.currentPrice = price));
   }
 
   fetchDevPrice() {
-    this.financialData.fetchDevPrice();
+    this.financialData.fetchDevPrice(this.msciApiSymbol);
   }
 
-  fetchLivePrice(apiSymbol: string) {
-    this.financialData.fetchLivePrice(apiSymbol);
+  fetchLivePrice() {
+    this.financialData.fetchLivePrice(this.msciApiSymbol);
   }
 }
