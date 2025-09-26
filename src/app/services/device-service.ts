@@ -10,20 +10,20 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
-import { distinctUntilChanged, filter, map } from 'rxjs';
+import { auditTime, distinctUntilChanged, filter, fromEvent, map, of, startWith } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DeviceService {
   private breakpointObserver = inject(BreakpointObserver);
+  private platformId = inject(PLATFORM_ID);
   private renderer: Renderer2;
   isAndroid: boolean = false;
   isiPhone: boolean = false;
 
   constructor(
     rendererFactory: RendererFactory2,
-    @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
@@ -63,4 +63,16 @@ export class DeviceService {
       }
     }
   }
+
+  readonly viewportWidth = toSignal(
+  isPlatformBrowser(this.platformId)
+    ? fromEvent(window, 'resize').pipe(
+        auditTime(100),
+        map(() => window.innerWidth),
+        startWith(window.innerWidth),
+        distinctUntilChanged()
+      )
+    : of(0),
+  { initialValue: 0 }
+);
 }
