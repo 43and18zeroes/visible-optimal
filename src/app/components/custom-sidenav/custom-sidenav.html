@@ -7,31 +7,3 @@
   }
 </li>
 }
-
-<!-- <mat-nav-list>
-  @for (item of menuItems(); track item.component) {
-  <a
-    mat-list-item
-    (click)="renderComponent(item.component)"
-    [activated]="active() === item.component"
-    [class.selected-menu-item]="active() === item.component"
-    [attr.aria-current]="active() === item.component ? 'page' : null"
-  >
-    <mat-icon
-      matListItemIcon
-      [fontSet]="
-        active() === item.component
-          ? 'material-icons'
-          : 'material-icons-outlined'
-      "
-      [style.marginLeft]="iconMargin()"
-    >
-      {{ item.icon }}
-    </mat-icon>
-
-    @if (!sideNavCollapsed()) {
-    <span matListItemTitle>{{ item.label }}</span>
-    }
-  </a>
-  }
-</mat-nav-list> -->
