@@ -1,5 +1,9 @@
 @for (item of menuItems(); track item.component) {
-<li class="no__highlight link__bgcolor" [class.active]="active() === item.component" (click)="renderComponent(item.component)">
+<li
+  class="no__highlight link__bgcolor"
+  [class.active]="active() === item.component"
+  (click)="renderComponent(item.component)"
+>
   <img [src]="item.imgSrc" alt="Asset Logo" />
 
   @if (!sideNavCollapsed()) {

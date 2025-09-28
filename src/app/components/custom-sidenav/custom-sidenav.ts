@@ -21,7 +21,7 @@ export type MenuItem = {
 export class CustomSidenav {
   switcher = inject(ComponentSwitchService);
   sideNavCollapsed = signal(false);
-  srcPath = "public/"
+  srcPath = 'public/';
 
   @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
