@@ -42,12 +42,6 @@ export class CustomSidenav {
 
   menuItems = signal<MenuItem[]>([
     {
-      icon: 'insightsinsights',
-      label: 'Overview',
-      component: 'overview',
-      imgSrc: `overview.png`,
-    },
-    {
       icon: 'filter_alt',
       label: 'FTSE',
       component: 'ftse',
@@ -59,23 +53,44 @@ export class CustomSidenav {
       component: 'msci',
       imgSrc: `ishares.png`,
     },
-    {
-      icon: 'filter_alt',
-      label: 'Gold',
-      component: 'gold',
-      imgSrc: `bs.png`,
-    },
-    {
-      icon: 'filter_alt',
-      label: 'Bitwise',
-      component: 'bitwise',
-      imgSrc: `bitwise.png`,
-    },
-    {
-      icon: 'filter_alt',
-      label: '21Shares',
-      component: 'twenty-one-shares',
-      imgSrc: `21.jpg`,
-    },
   ]);
+
+  // menuItems = signal<MenuItem[]>([
+  //   {
+  //     icon: 'insightsinsights',
+  //     label: 'Overview',
+  //     component: 'overview',
+  //     imgSrc: `overview.png`,
+  //   },
+  //   {
+  //     icon: 'filter_alt',
+  //     label: 'FTSE',
+  //     component: 'ftse',
+  //     imgSrc: `vanguard.png`,
+  //   },
+  //   {
+  //     icon: 'filter_alt',
+  //     label: 'MSCI',
+  //     component: 'msci',
+  //     imgSrc: `ishares.png`,
+  //   },
+  //   {
+  //     icon: 'filter_alt',
+  //     label: 'Gold',
+  //     component: 'gold',
+  //     imgSrc: `bs.png`,
+  //   },
+  //   {
+  //     icon: 'filter_alt',
+  //     label: 'Bitwise',
+  //     component: 'bitwise',
+  //     imgSrc: `bitwise.png`,
+  //   },
+  //   {
+  //     icon: 'filter_alt',
+  //     label: '21Shares',
+  //     component: 'twenty-one-shares',
+  //     imgSrc: `21.jpg`,
+  //   },
+  // ]);
 }
