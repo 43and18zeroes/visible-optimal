@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { ComponentSwitchService } from '../../services/component-switch-service';
 
 export type MenuItem = {
-  icon: string;
   label: string;
   component: string;
   imgSrc: string;
@@ -42,13 +41,11 @@ export class CustomSidenav {
 
   menuItems = signal<MenuItem[]>([
     {
-      icon: 'filter_alt',
       label: 'FTSE',
       component: 'ftse',
       imgSrc: `vanguard.png`,
     },
     {
-      icon: 'filter_alt',
       label: 'MSCI',
       component: 'msci',
       imgSrc: `ishares.png`,
