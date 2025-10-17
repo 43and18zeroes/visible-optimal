@@ -50,7 +50,7 @@ export class App {
         this.isDesktop.set(true);
       }
     });
-    
+
     effect(() => {
       const _width = this.deviceService.viewportWidth(); // nur lesen, um zu triggern
       this.collapsed.set(true);

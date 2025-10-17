@@ -1,6 +1,6 @@
 import {
   ApplicationConfig,
-  LOCALE_ID, 
+  LOCALE_ID,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideRouter(routes),
     { provide: LOCALE_ID, useValue: 'de' },
-    provideHttpClient()
+    provideHttpClient(),
   ],
 };
