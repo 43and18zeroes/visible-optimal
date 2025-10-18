@@ -4,6 +4,7 @@ import { FinancialDataService } from '../../../services/financial-data-service';
 import { ProductDetails } from '../../shared/product-details/product-details';
 import { FTSE } from '../../../constants';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AssetsService } from '../assets-service';
 
 @Component({
   selector: 'app-ftse',
@@ -14,6 +15,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class Ftse {
   financialData = inject(FinancialDataService);
   destroyRef = inject(DestroyRef);
+  private scrollService = inject(AssetsService);
 
   currentPrice: number | null = null;
 
@@ -40,5 +42,8 @@ export class Ftse {
 
   fetchLivePrice() {
     this.financialData.fetchLivePrice(this.ftseApiSymbol);
+  }
+  ngAfterViewInit(): void {
+    this.scrollService.scrollToTop(50);
   }
 }
