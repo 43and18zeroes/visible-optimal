@@ -4,6 +4,7 @@ import { AssetDetails } from '../../shared/asset-details/asset-details';
 import { FinancialDataService } from '../../../services/financial-data-service';
 import { MSCI } from '../../../constants';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AssetsService } from '../assets-service';
 
 @Component({
   selector: 'app-msci',
@@ -15,6 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class Msci {
   financialData = inject(FinancialDataService);
   destroyRef = inject(DestroyRef);
+  private scrollService = inject(AssetsService);
 
   currentPrice: number | null = null;
 
@@ -40,20 +42,6 @@ export class Msci {
   }
 
   ngAfterViewInit(): void {
-    // Da ngAfterViewInit nur einmal beim Laden der Komponente aufgerufen wird,
-    // können wir versuchen, sofort zu scrollen, aber wir benötigen den Microtask-Flush.
-    Promise.resolve().then(() => {
-      this.forceMatSidenavScrollToTop();
-    });
-  }
-
-  private forceMatSidenavScrollToTop(): void {
-    // Versucht, den Scrollbalken des mat-sidenav-content über den Selektor zu finden
-    const content = document.querySelector('mat-sidenav-content');
-    if (content) {
-      content.scrollTop = 0;
-      // Falls content.scrollTop = 0 nicht funktioniert, versuchen Sie:
-      // content.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    }
+    this.scrollService.scrollToTop(50);
   }
 }
